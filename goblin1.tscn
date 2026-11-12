@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://clr0k51ihhdx6"]
+
+[ext_resource type="Script" uid="uid://pfkm04bynxxb" path="res://goblin_1.gd" id="1_oe7s0"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_s5vrh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
+size = Vector2(33, 35)
+
+[node name="goblin1" type="CharacterBody2D" unique_id=1739752143]
+script = ExtResource("1_oe7s0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=967166346]
+position = Vector2(1.0000038, -2.0000038)
+scale = Vector2(0.34375, 0.34375)
+texture = ExtResource("1_s5vrh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1488478264]
+position = Vector2(1.5, -2.5)
+shape = SubResource("RectangleShape2D_onrkg")
+
+[node name="Timer" type="Timer" parent="." unique_id=1182797461]
+wait_time = 2.0
+autostart = true
+
+[node name="ProjectileSpawn" type="Marker2D" parent="." unique_id=1963983316]
+position = Vector2(1, -20)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
