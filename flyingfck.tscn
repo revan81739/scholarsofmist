@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bbg2s121tskb4"]
+
+[ext_resource type="Script" uid="uid://dn860kwrlihvs" path="res://flyingfck.gd" id="1_660gf"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_fr3de"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vyccy"]
+size = Vector2(61, 56.5)
+
+[node name="flyingfck" type="CharacterBody2D" unique_id=174251942]
+script = ExtResource("1_660gf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1759354780]
+position = Vector2(3.000002, -5.000002)
+scale = Vector2(0.5, 0.4765625)
+texture = ExtResource("1_fr3de")
+
+[node name="Timer" type="Timer" parent="." unique_id=709394897]
+wait_time = 3.0
+autostart = true
+
+[node name="ProjectileSpawn" type="Marker2D" parent="." unique_id=614730047]
+position = Vector2(-31, -30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1608208367]
+position = Vector2(-1, -7)
+shape = SubResource("RectangleShape2D_vyccy")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
