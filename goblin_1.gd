@@ -1,6 +1,7 @@
 extends CharacterBody2D
 @export var move_speed :=80.0
 @export var gravity := 1200.0
+
 const PROJECTILE =preload("res://projectile1.tscn")
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var shoot_timer=$Timer

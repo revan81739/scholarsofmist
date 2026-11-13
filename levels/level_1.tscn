@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://6q7eg662rwfs" path="res://assets/64x64.png" id="1_vn7o3"]
 [ext_resource type="PackedScene" uid="uid://ckudr8chj1kgo" path="res://player.tscn" id="3_bt44k"]
 [ext_resource type="PackedScene" uid="uid://clr0k51ihhdx6" path="res://goblin1.tscn" id="4_kx6l7"]
+[ext_resource type="Script" uid="uid://dkuigeegc6hko" path="res://levels/health_bar.gd" id="5_n46q3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jirdo"]
 texture = ExtResource("1_vn7o3")
@@ -19,22 +20,47 @@ tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_jirdo")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btoec"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gwceb"]
+bg_color = Color(3.8023293e-06, 0.7220327, 0.29256332, 1)
+
 [node name="Level1" type="Node2D" unique_id=1215909388]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=796844536]
-position = Vector2(130.49998, -314)
+position = Vector2(502, 371)
 scale = Vector2(1.2568359, 1.0078125)
 texture = ExtResource("1_jirdo")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1586709812]
-position = Vector2(113, -318)
+position = Vector2(538, 382)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1775703189]
-tile_map_data = PackedByteArray("AAACAP//AAACAA4AAAABAP//AAACAA4AAAAAAP//AAACAA4AAAD/////AAACAA4AAAD+////AAACAA4AAAADAP//AAACAA4AAAAIAP//AAACAA4AAAAHAP//AAACAA4AAAAGAP//AAACAA4AAAAFAP//AAACAA4AAAAEAP//AAACAA4AAAD9//7/AAACAA4AAAD8//7/AAACAA4AAAD7//7/AAACAA4AAAD6//3/AAACAA4AAAD6//z/AAACAA4AAAD6//v/AAACAA4AAAD6//j/AAACAA4AAAAJAP7/AAACAA4AAAAJAP3/AAACAA4AAAAJAPz/AAACAA4AAAAIAPf/AAACAA4AAAAHAPf/AAACAA4AAAAGAPf/AAACAA4AAAAFAPf/AAACAA4AAAAEAPf/AAACAA4AAAADAPf/AAACAA4AAAACAPf/AAACAA4AAAACAPb/AAACAA4AAAABAPb/AAACAA4AAAAAAPb/AAACAA4AAAD///b/AAACAA4AAAD+//b/AAACAA4AAAD9//b/AAACAA4AAAD8//b/AAACAA4AAAD7//b/AAACAA4AAAD6//b/AAACAA4AAAD6//f/AAACAA4AAAAJAPv/AAACAA4AAAAJAPr/AAACAA4AAAAJAPf/AAACAA4AAAAAAPr/AAACAA4AAAABAPr/AAACAA4AAAAEAP3/AAACAA4AAAAFAP3/AAACAA4AAAA=")
+tile_map_data = PackedByteArray("AAAAAAIAAAACAA4AAAAAAAMAAAACAA4AAAAAAAQAAAACAA4AAAAAAAcAAAACAA4AAAABAAgAAAACAA4AAAABAAkAAAACAA4AAAACAAoAAAACAA4AAAADAAoAAAACAA4AAAAEAAoAAAACAA4AAAAFAAoAAAACAA4AAAAGAAoAAAACAA4AAAAHAAoAAAACAA4AAAAIAAoAAAACAA4AAAAJAAoAAAACAA4AAAAKAAoAAAACAA4AAAALAAoAAAACAA4AAAAMAAoAAAACAA4AAAANAAoAAAACAA4AAAAOAAkAAAACAA4AAAAOAAgAAAACAA4AAAAOAAcAAAACAA4AAAAOAAYAAAACAA4AAAAOAAMAAAACAA4AAAAOAAIAAAACAA4AAAAOAAEAAAACAA4AAAANAAEAAAACAA4AAAAMAAEAAAACAA4AAAALAAEAAAACAA4AAAAKAAEAAAACAA4AAAAJAAEAAAACAA4AAAAIAAEAAAACAA4AAAAHAAEAAAACAA4AAAAGAAEAAAACAA4AAAAFAAEAAAACAA4AAAAEAAEAAAACAA4AAAADAAEAAAACAA4AAAACAAEAAAACAA4AAAABAAEAAAACAA4AAAAAAAEAAAACAA4AAAAGAAYAAAACAA4AAAAHAAYAAAACAA4AAAAJAAQAAAACAA4AAAAKAAQAAAACAA4AAAA=")
 tile_set = SubResource("TileSet_77kos")
 
 [node name="player" parent="." unique_id=745066504 instance=ExtResource("3_bt44k")]
-position = Vector2(-357, -377)
+position = Vector2(31, 376)
 
 [node name="goblin1" parent="." unique_id=1739752143 instance=ExtResource("4_kx6l7")]
-position = Vector2(78, -83)
+position = Vector2(299, 606)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=435845444]
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer" unique_id=519402850]
+anchors_preset = -1
+anchor_left = 0.09200001
+anchor_top = 0.20400001
+anchor_right = 0.09200001
+anchor_bottom = 0.20400001
+offset_left = 44.01599
+offset_top = 32.808
+offset_right = 173.01599
+offset_bottom = 44.808
+theme_override_styles/background = SubResource("StyleBoxFlat_btoec")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gwceb")
+max_value = 5.0
+value = 5.0
+show_percentage = false
+script = ExtResource("5_n46q3")
+player_path = NodePath("../../player")
